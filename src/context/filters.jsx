@@ -6,7 +6,7 @@ export const FiltersContext = createContext();
 export function FiltersProvider({ children }) {
     const [filters, setFilters] = useState({
         page: 1,
-        pageSize: 10,        
+        pageSize: 12,        
         genre:'all',
         author:'all',
         year:1800,
