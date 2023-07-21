@@ -20,7 +20,10 @@ export function ReadingListProvider({ children }) {
         ]))        
     }
 
-    const removeFromReadingList = item => {}
+    const removeFromReadingList = item => {
+        setReadingList(prevState => prevState.filter(element => element.ISBN !== item.ISBN))
+    }
+
     const ClearReadingList = () => {
         setReadingList([])
     }

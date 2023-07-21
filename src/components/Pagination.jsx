@@ -1,9 +1,9 @@
-import  { useLibraryStat } from  '../hooks/useLibraryStat.jsx'
 import { useFilters } from '../hooks/useFilters.jsx'
 
 export function Pagination(){
-    const { filters, setFilters } = useFilters()
-    const { itemsTotal } = useLibraryStat()    
+    const { filters, setFilters } = useFilters()    
+
+    const itemsTotal = filters.totalFilterd
     
     const totalPages = Math.ceil(itemsTotal / filters.pageSize)
     const isFirstPage = filters.page === 1

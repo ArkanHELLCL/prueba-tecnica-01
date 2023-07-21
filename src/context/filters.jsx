@@ -10,7 +10,9 @@ export function FiltersProvider({ children }) {
         genre:'all',
         author:'all',
         year:1800,
-        type:'all'
+        type:'all',
+        totalFilterd:0,
+        itemsFileterd:[]
     })
     return (
         <FiltersContext.Provider value={{
