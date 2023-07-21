@@ -13,7 +13,7 @@ export function ReadingList() {
                 <div className={`${readingList.length ? 'inline-flex' : 'hidden'} absolute items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900`}>{readingList.length}</div>
             </label>
             <input id={realingListChkboxId} type="checkbox" className="hidden peer/listReading" />
-            <aside className="block top-28 w-52 -mr-44 p-8 pl-1 h-full fixed right-0 peer-checked/listReading:mr-0 peer-checked/listReading:p-8 dark:bg-gray-900 bg-gray-100 transition-all text-center dark:bg-opacity-90 bg-opacity-90 hover:mr-0 hover:p-8 z-10 overflow-auto">
+            <aside className="block top-32 w-52 -mr-44 p-8 pl-2 h-full fixed right-0 peer-checked/listReading:mr-0 peer-checked/listReading:p-8 dark:bg-gray-700 bg-gray-300 transition-all text-center dark:bg-opacity-90 bg-opacity-90 hover:mr-0 hover:p-8 z-10 overflow-auto rounded-lg shadow-lg">
                 <ul>                    
                     {readingList.map((item) => (
                         <li key={item.ISBN} className="first:m-auto -mt-36">
@@ -29,7 +29,7 @@ export function ReadingList() {
                     ))}
 
                 </ul>
-                <button className={`${readingList.length ? 'inline-flex' : 'hidden'} dark:text-gray-100 text-gray-900 hover:scale-125 pt-5 transition-all`} onClick={() => clearReadingList()}>
+                <button className={`${readingList.length ? 'inline-flex' : 'hidden'} text-red-500 hover:scale-125 pt-5 transition-all`} onClick={() => clearReadingList()}>
                     <ClearReadingListIcon />
                 </button>
                 <span className={`${readingList.length ? 'hidden' : 'block'} text-center dark:text-gray-100 text-gray-900 hover:scale-125 pt-5 transition-all`}>Lista Vacia</span>
