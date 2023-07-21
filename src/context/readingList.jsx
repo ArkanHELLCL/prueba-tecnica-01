@@ -24,8 +24,9 @@ export function ReadingListProvider({ children }) {
         setReadingList(prevState => prevState.filter(element => element.ISBN !== item.ISBN))
     }
 
-    const ClearReadingList = () => {
-        setReadingList([])
+    const clearReadingList = () => {
+        //setReadingList([])        
+        setReadingList(() => [])    //Cannot update a component while rendering a different component warning
     }
 
     return (
@@ -33,7 +34,7 @@ export function ReadingListProvider({ children }) {
             readingList,
             addToReadingList,
             removeFromReadingList,
-            ClearReadingList
+            clearReadingList
         }}>
         {children}
         </ReadingListContext.Provider>
