@@ -119,7 +119,7 @@ export function Filters () {
                 </div> 
             </section>
             <section className='pt-5'>                
-                <span className ="bg-green-100 text-green-800 text-xl font-medium mr-2 px-2.5 py-0.5 pb-1 rounded-full dark:bg-green-900 dark:text-green-300">Disponibles : {totalItemesAvailable}</span>
+                <span className ="bg-green-200 text-green-800 text-xl font-medium mr-2 px-2.5 py-0.5 pb-1 rounded-full dark:bg-green-900 dark:text-green-300">Disponibles : {totalItemesAvailable}</span>
             </section>
         </>
     )
