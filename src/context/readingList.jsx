@@ -1,37 +1,34 @@
 /* eslint-disable react/prop-types */
-import { createContext, useState } from "react";
+import { createContext, useReducer } from "react";
+import { readingListinitialState, readingListReducer, READINGLIST_ACTION_TYPES } from "../reducers/readingList.jsx";
 
 export const ReadingListContext = createContext();
 
-export function ReadingListProvider({ children }) {
-    const [readingList, setReadingList] = useState([])
+function useReadingListReducer () {
+    const [state, dispatch] = useReducer(readingListReducer, readingListinitialState);
+    const addToReadingList = readingList => dispatch({ 
+        type: READINGLIST_ACTION_TYPES.ADD_TO_READING_LIST, 
+        payload: readingList 
+    });
 
-    const addToReadingList = item => {        
-        const itemInReadingList = readingList.find((element) => element.ISBN === item.ISBN)        
-        if(itemInReadingList) {
-            return
-        }
-        setReadingList(prevState => ([
-            ...prevState,
-            {
-                ...item,                
-                quantity: 1
-            }
-        ]))        
-    }
+    const removeFromReadingList = readingList => dispatch({
+        type: READINGLIST_ACTION_TYPES.REMOVE_FROM_READING_LIST,
+        payload: readingList
+    });
 
-    const removeFromReadingList = item => {
-        setReadingList(prevState => prevState.filter(element => element.ISBN !== item.ISBN))
-    }
+    const clearReadingList = () => dispatch({
+        type: READINGLIST_ACTION_TYPES.CLEAR_READING_LIST
+    });
+    
+    return {state, addToReadingList, removeFromReadingList, clearReadingList}
+}
 
-    const clearReadingList = () => {
-        //setReadingList([])        
-        setReadingList(() => [])    //Cannot update a component while rendering a different component warning
-    }
-
+export function ReadingListProvider({ children }) {    
+    const { state, addToReadingList, removeFromReadingList, clearReadingList } = useReadingListReducer()
+    
     return (
         <ReadingListContext.Provider value={{
-            readingList,
+            readingList: state,
             addToReadingList,
             removeFromReadingList,
             clearReadingList
