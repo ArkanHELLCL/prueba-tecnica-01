@@ -1,4 +1,4 @@
-export const readingListinitialState = JSON.parse(window.localStorage.getItem('readingList')) || [];   
+export const readingListinitialState = JSON.parse(window.localStorage.getItem('readingList')) || [];
 
 export const READINGLIST_ACTION_TYPES = {
     ADD_TO_READING_LIST: 'ADD_TO_READING_LIST',
