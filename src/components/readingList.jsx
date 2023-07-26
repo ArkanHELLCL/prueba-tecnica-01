@@ -4,12 +4,23 @@ import { ReadingBookIcon, ClearReadingListIcon, DelIcon } from "./icons.jsx";
 
 function storageEvent(renderReadingList){
     window.addEventListener('storage', (event) => {
-        if (event.key === 'readingList') {        
-            //console.log(event.oldValue, event.newValue)
+        if (event.key === 'readingList') {            
             return renderReadingList(JSON.parse(event.newValue))
         }
     })
 }
+
+function openReadingList() {
+    console.log(this)
+    this.addEventListener('click', () => {
+    if(this.checked){
+        window.localStorage.setItem('openReadingList', true)
+    } else {        
+        window.localStorage.setItem('openReadingList', false)
+        }   
+    })
+}
+
 
 export function ReadingList() {
     const realingListChkboxId = useId();    
