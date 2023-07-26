@@ -2,9 +2,20 @@ import { useId } from "react";
 import { useReadingList } from "../hooks/useReadingList"
 import { ReadingBookIcon, ClearReadingListIcon, DelIcon } from "./icons.jsx";
 
+function storageEvent(renderReadingList){
+    window.addEventListener('storage', (event) => {
+        if (event.key === 'readingList') {        
+            console.log(event.oldValue, event.newValue)
+            return renderReadingList(JSON.parse(event.newValue))
+        }
+    })
+}
+
 export function ReadingList() {
     const realingListChkboxId = useId();    
-    const { removeFromReadingList, clearReadingList, readingList } = useReadingList()
+    const { removeFromReadingList, clearReadingList, renderReadingList, readingList } = useReadingList()
+
+    storageEvent(renderReadingList)
         
     return (
         <>

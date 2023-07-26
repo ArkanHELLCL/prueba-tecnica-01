@@ -3,7 +3,8 @@ export const readingListinitialState = JSON.parse(window.localStorage.getItem('r
 export const READINGLIST_ACTION_TYPES = {
     ADD_TO_READING_LIST: 'ADD_TO_READING_LIST',
     REMOVE_FROM_READING_LIST: 'REMOVE_FROM_READING_LIST',
-    CLEAR_READING_LIST: 'CLEAR_READING_LIST'
+    CLEAR_READING_LIST: 'CLEAR_READING_LIST',
+    RENDER_READING_LIST: 'RENDER_READING_LIST'
 }
 
 export const updateLocalStorage = (state) => {
@@ -43,6 +44,9 @@ export const readingListReducer = (state, action) => {
         case READINGLIST_ACTION_TYPES.CLEAR_READING_LIST: {
             updateLocalStorage([])
             return []
+        }
+        case READINGLIST_ACTION_TYPES.RENDER_READING_LIST: {
+            return actionPayload
         }
     }
     return state;

@@ -19,19 +19,25 @@ function useReadingListReducer () {
     const clearReadingList = () => dispatch({
         type: READINGLIST_ACTION_TYPES.CLEAR_READING_LIST
     });
+
+    const renderReadingList = readingList => dispatch({
+        type: READINGLIST_ACTION_TYPES.RENDER_READING_LIST,
+        payload: readingList
+    });
     
-    return {state, addToReadingList, removeFromReadingList, clearReadingList}
+    return {state, addToReadingList, removeFromReadingList, clearReadingList, renderReadingList}
 }
 
 export function ReadingListProvider({ children }) {    
-    const { state, addToReadingList, removeFromReadingList, clearReadingList } = useReadingListReducer()
-    
+    const { state, addToReadingList, removeFromReadingList, clearReadingList, renderReadingList } = useReadingListReducer()
+
     return (
         <ReadingListContext.Provider value={{
             readingList: state,
             addToReadingList,
             removeFromReadingList,
-            clearReadingList
+            clearReadingList,
+            renderReadingList
         }}>
         {children}
         </ReadingListContext.Provider>
