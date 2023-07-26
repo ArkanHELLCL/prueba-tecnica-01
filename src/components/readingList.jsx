@@ -5,7 +5,7 @@ import { ReadingBookIcon, ClearReadingListIcon, DelIcon } from "./icons.jsx";
 function storageEvent(renderReadingList){
     window.addEventListener('storage', (event) => {
         if (event.key === 'readingList') {        
-            console.log(event.oldValue, event.newValue)
+            //console.log(event.oldValue, event.newValue)
             return renderReadingList(JSON.parse(event.newValue))
         }
     })
