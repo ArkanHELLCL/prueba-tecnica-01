@@ -21,14 +21,7 @@ export function useSearch({error, search}, setFilters) {
                 error: 'No se puede buscar un item numerico'
             }))
             return
-        }
-        if(search.length < 3){
-            setFilters(prevState => ({
-                ...prevState, 
-                error: 'La busqueda debe tener al menos 3 caracteres'
-            }))            
-            return
-        }        
+        }           
 
         setFilters(prevState => ({
             ...prevState, 
