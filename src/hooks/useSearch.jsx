@@ -14,14 +14,7 @@ export function useSearch({error, search}, setFilters) {
                 error: 'No se puede buscar un item vacio'
             }))
             return
-        }
-        if(search.match(/^\d+$/)){
-            setFilters(prevState => ({
-                ...prevState, 
-                error: 'No se puede buscar un item numerico'
-            }))
-            return
-        }           
+        }        
 
         setFilters(prevState => ({
             ...prevState, 
