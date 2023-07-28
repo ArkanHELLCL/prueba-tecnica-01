@@ -2,6 +2,7 @@ import { describe, it, expect } from "vitest"
 import { renderHook } from "@testing-library/react"
 import { FiltersContext, FiltersProvider } from "../src/context/filters.jsx"
 import { ReadingListContext, ReadingListProvider } from "../src/context/readingList.jsx"
+import { readingListReducer } from "../src/reducers/readingList.jsx"
 
 import { useFilters } from '../src/hooks/useFilters.jsx'
 
@@ -62,5 +63,15 @@ describe('ReadingList' , () => {
         expect(result.current.filters).toBeDefined()
         expect(result.current.setFilters).toBeDefined()
         expect(result.current.filterLibrary).toBeDefined()
+    })
+})
+
+
+describe('readingListReducer', () => {
+    it('should add an item to the reading list', () => {
+
+    expect(
+        readingListReducer([], {type: 'ADD_TO_READING_LIST', payload: { id: 1 } })
+        ).toEqual([{ id: 1, quantity: 1 }])
     })
 })
