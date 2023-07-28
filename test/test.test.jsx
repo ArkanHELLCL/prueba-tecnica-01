@@ -69,9 +69,8 @@ describe('ReadingList' , () => {
 
 describe('readingListReducer', () => {
     it('should add an item to the reading list', () => {
-
-    expect(
-        readingListReducer([], {type: 'ADD_TO_READING_LIST', payload: { id: 1 } })
-        ).toEqual([{ id: 1, quantity: 1 }])
+        expect(
+            readingListReducer([], {type: 'ADD_TO_READING_LIST', payload: { id: 1 } })
+            ).toEqual([{ id: 1, quantity: 1 }])
     })
 })
